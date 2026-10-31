@@ -185,4 +185,3 @@ Use supervised real-robot trials with an accessible power cutoff. Begin with low
 - LeRobot ACT: https://huggingface.co/docs/lerobot/act
 - Isaac Lab: https://docs.nvidia.com/isaaclab/isaac-lab
 - Isaac Lab SO-101 simulated data collection: https://nvidia.github.io/IsaacCapture/main/integrations/lerobot/data_collection_sim.html
-

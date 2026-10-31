@@ -21,4 +21,3 @@ This repository tracks project documentation and project-specific source/configu
 - [ ] Create a fixed-camera tabletop perception baseline.
 - [ ] Build and evaluate safe pick/place skills.
 - [ ] Connect validated language instructions to the skill executor.
-

@@ -18,4 +18,3 @@ The demonstrations likely covered a narrow range of relative object positions, w
 - Expand object position and wrist-orientation coverage while holding background and camera fixed.
 - Then vary background separately while holding object positions fixed.
 - Log perception errors separately from motion/grasp errors.
-
