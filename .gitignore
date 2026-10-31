@@ -1,0 +1,43 @@
+# Local data and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python environments and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# LeRobot/Hugging Face datasets, videos, and model checkpoints
+outputs/
+datasets/
+recordings/
+checkpoints/
+*.mp4
+*.mkv
+*.avi
+*.parquet
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+
+# Robot-local calibration and credentials
+calibration/
+*calibration*.json
+huggingface_token*
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
