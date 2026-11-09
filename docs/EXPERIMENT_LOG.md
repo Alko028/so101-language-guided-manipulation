@@ -1,5 +1,9 @@
 # Experiment Log
 
+## 2026-11-08 — live wrist-camera detection preview added
+
+Added a camera-only script using Ultralytics YOLOE text prompts. It displays bounding boxes, class labels, confidence scores, and FPS, and can save annotated frames under the ignored `outputs/vision_captures/` directory. Installed Ultralytics 8.4.208 in the existing `(lerobot)` environment and pinned OpenCV to 4.12.0.88 to stay on the OpenCV 4.x line. `pip check` reported no broken requirements. The camera window and actual object-detection quality have not yet been confirmed in a live run.
+
 ## 2026-10-31 — ACT tape measure pick-and-place baseline
 
 ### Task and setup
