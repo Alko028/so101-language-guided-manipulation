@@ -13,7 +13,7 @@ Use modular components: language-to-task parsing, object detection/localization,
 
 ## Live camera object detection
 
-The first perception preview reads the Follower wrist camera and draws boxes, class names, confidence scores, and FPS. It uses text-prompted YOLOE so the target list can include objects such as a pen or tape measure without training a custom detector first. It only reads camera frames and never sends robot motor commands.
+The first perception preview reads the Follower wrist camera and draws boxes, class names, confidence scores, and FPS. It uses text-prompted YOLOE so the target list can include objects such as a pen or tape measure without training a custom detector first. The resizable preview keeps the camera image at its original aspect ratio and adds black bars when needed. It only reads camera frames and never sends robot motor commands.
 
 From the activated `(lerobot)` Conda environment, install the pinned vision dependencies once:
 

@@ -7,6 +7,7 @@ import time
 from pathlib import Path
 
 import cv2
+import numpy as np
 import torch
 from ultralytics import YOLOE
 
@@ -56,6 +57,26 @@ def open_camera(index: int, width: int, height: int) -> cv2.VideoCapture:
     )
 
 
+def fit_to_window(frame: np.ndarray, window_name: str) -> np.ndarray:
+    """Resize only for display, preserving the camera image's aspect ratio."""
+    _, _, target_width, target_height = cv2.getWindowImageRect(window_name)
+    if target_width <= 0 or target_height <= 0:
+        target_height, target_width = frame.shape[:2]
+
+    frame_height, frame_width = frame.shape[:2]
+    scale = min(target_width / frame_width, target_height / frame_height)
+    display_width = max(1, round(frame_width * scale))
+    display_height = max(1, round(frame_height * scale))
+    interpolation = cv2.INTER_AREA if scale < 1 else cv2.INTER_LINEAR
+    resized = cv2.resize(frame, (display_width, display_height), interpolation=interpolation)
+
+    canvas = np.zeros((target_height, target_width, 3), dtype=np.uint8)
+    left = (target_width - display_width) // 2
+    top = (target_height - display_height) // 2
+    canvas[top : top + display_height, left : left + display_width] = resized
+    return canvas
+
+
 def main() -> None:
     args = parse_args()
     device = args.device
@@ -74,6 +95,7 @@ def main() -> None:
 
     window_name = "SO-101 live object detection (camera only; no motor control)"
     cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+    cv2.resizeWindow(window_name, 960, 720)
     capture_dir = Path(__file__).resolve().parents[1] / "outputs" / "vision_captures"
     previous_time = time.perf_counter()
     fps_ema = 0.0
@@ -139,7 +161,7 @@ def main() -> None:
                 2,
                 cv2.LINE_AA,
             )
-            cv2.imshow(window_name, annotated)
+            cv2.imshow(window_name, fit_to_window(annotated, window_name))
 
             key = cv2.waitKey(1) & 0xFF
             if key in (ord("q"), 27):

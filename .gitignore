@@ -29,6 +29,7 @@ checkpoints/
 *.pt
 *.pth
 *.ckpt
+mobileclip2_b.ts
 
 # Robot-local calibration and credentials
 calibration/
